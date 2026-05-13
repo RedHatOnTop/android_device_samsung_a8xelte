@@ -1,0 +1,15 @@
+<manifest version="1.0" type="device">
+    <!-- The A8 2016 does not have an IR blaster, unlike the S6 -->
+    <!-- No android.hardware.ir entry -->
+
+    <!-- Fingerprint -->
+    <hal format="hidl">
+        <name>android.hardware.biometrics.fingerprint</name>
+        <transport>hwbinder</transport>
+        <version>2.3</version>
+        <interface>
+            <name>IBiometricsFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</manifest>

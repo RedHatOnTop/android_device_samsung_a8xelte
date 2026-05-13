@@ -1,0 +1,5 @@
+# SELinux policy for a8xelte
+# This will need to be expanded during debugging
+
+# Init
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.samsung  u:object_r:hal_fingerprint_default_exec:s0

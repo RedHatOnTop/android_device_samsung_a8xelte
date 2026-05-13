@@ -1,0 +1,65 @@
+{
+    "config_name": "thermal_info_config",
+    "items": [
+        {
+            "device": "a8xelte",
+            "modifier": "default",
+            "sensor_info": [
+                {
+                    "sensor_name": "cpu",
+                    "type": "CPU",
+                    "threshold_info": [
+                        {
+                            "trigger": 50,
+                            "reset": 49,
+                            "threshold_clr": 48,
+                            "action_info": [
+                                {
+                                    "action": 1,
+                                    "limit": 100,
+                                    "target": 0
+                                }
+                            ]
+                        },
+                        {
+                            "trigger": 60,
+                            "reset": 59,
+                            "threshold_clr": 58,
+                            "action_info": [
+                                {
+                                    "action": 1,
+                                    "limit": 80,
+                                    "target": 0
+                                }
+                            ]
+                        },
+                        {
+                            "trigger": 70,
+                            "reset": 69,
+                            "threshold_clr": 68,
+                            "action_info": [
+                                {
+                                    "action": 1,
+                                    "limit": 60,
+                                    "target": 0
+                                }
+                            ]
+                        },
+                        {
+                            "trigger": 80,
+                            "reset": 79,
+                            "threshold_clr": 78,
+                            "action_info": [
+                                {
+                                    "action": 1,
+                                    "limit": 40,
+                                    "target": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+# Proprietary blobs for Galaxy A8 2016 (SM-A810S)
+# Extracted from stock Oreo firmware A810SKSU2CRH1
+#
+# Format: source_path|destination_path
+# Lines starting with # are comments
+#
+# NOTE: This is an initial list based on the S6 (zerofltexx) blob list.
+# Some blobs may differ for the A8 2016. After first extraction,
+# compare with stock firmware and adjust as needed.
+#
+# Many of these blobs come from the universal7420-common vendor tree.
+# Only device-specific blobs should be listed here.
+
+# Camera
+vendor/lib/libexynoscamera.so
+vendor/lib64/libexynoscamera.so
+vendor/lib/libcamera_client.so
+vendor/lib/libcameraservice.so
+vendor/lib/libcamera_metadata.so
+vendor/lib64/libcamera_client.so
+vendor/lib64/libcameraservice.so
+vendor/lib64/libcamera_metadata.so
+
+# Fingerprint
+vendor/lib/libbauthserver.so
+vendor/lib/libbauthtzcommon.so
+vendor/lib64/libbauthserver.so
+vendor/lib64/libbauthtzcommon.so
+vendor/lib/libfingerprint.so
+vendor/lib64/libfingerprint.so
+
+# GPU (Mali-T760)
+vendor/lib/egl/libGLES_mali.so
+vendor/lib64/egl/libGLES_mali.so
+vendor/lib/libOpenCL.so
+vendor/lib64/libOpenCL.so
+vendor/lib/libRS.so
+vendor/lib64/libRS.so
+vendor/lib/libRSDriver.so
+vendor/lib64/libRSDriver.so
+vendor/lib/libbcc.so
+vendor/lib64/libbcc.so
+vendor/lib/libbcinfo.so
+vendor/lib64/libbcinfo.so
+vendor/lib/libclang.so
+vendor/lib64/libclang.so
+vendor/lib/libLLVM.so
+vendor/lib64/libLLVM.so
+
+# Media / Codecs
+vendor/lib/libExynosOMX_Core.so
+vendor/lib/libExynosOMX_Resourcemanager.so
+vendor/lib/libOMX.Exynos.MPEG4.Encoder.so
+vendor/lib/libOMX.Exynos.MPEG4.Decoder.so
+vendor/lib/libOMX.Exynos.AVC.Encoder.so
+vendor/lib/libOMX.Exynos.AVC.Decoder.so
+vendor/lib/libOMX.Exynos.HEVC.Encoder.so
+vendor/lib/libOMX.Exynos.HEVC.Decoder.so
+vendor/lib/libOMX.Exynos.VP9.Decoder.so
+vendor/lib/libOMX.Exynos.VP8.Decoder.so
+vendor/lib/libOMX.Exynos.VP8.Encoder.so
+vendor/lib/libstagefrighthw.so
+
+# Display / HW Composer
+vendor/lib/libdisplay.so
+vendor/lib/libfimg.so
+vendor/lib/libexynosscaler.so
+vendor/lib/libexynosgscaler.so
+vendor/lib/libcsc.so
+vendor/lib/libion.so
+vendor/lib/libion_exynos.so
+vendor/lib/hw/gralloc.exynos7420.so
+vendor/lib/hw/hwcomposer.exynos7420.so
+vendor/lib/hw/memtrack.exynos7420.so
+vendor/lib64/libdisplay.so
+vendor/lib64/libfimg.so
+vendor/lib64/libion.so
+vendor/lib64/libion_exynos.so
+
+# WiFi / Bluetooth
+vendor/etc/wifi/bcmdhd_sta.bin
+vendor/etc/wifi/bcmdhd_apsta.bin
+vendor/etc/wifi/nvram_net.txt
+vendor/lib/libbt-vendor.so
+vendor/lib64/libbt-vendor.so
+
+# GPS
+vendor/lib/hw/gps.exynos7420.so
+vendor/lib64/hw/gps.exynos7420.so
+vendor/lib/libwrappergps.so
+
+# RIL / Modem
+vendor/lib/libsec-ril.so
+vendor/lib/libsecril-client.so
+vendor/lib/libprotobuf-cpp-full.so
+vendor/lib/libprotobuf-cpp-lite.so
+vendor/lib64/libsec-ril.so
+vendor/lib64/libsecril-client.so
+vendor/lib64/libprotobuf-cpp-full.so
+vendor/lib64/libprotobuf-cpp-lite.so
+bin/cbd
+
+# Sensors
+vendor/lib/libsensorhub.so
+vendor/lib64/libsensorhub.so
+
+# Audio
+vendor/lib/libaudio.so
+vendor/lib/libaudioparameter.so
+vendor/lib/libtinyalsa.so
+vendor/lib/libtinycompress.so
+vendor/lib64/libtinyalsa.so
+vendor/lib64/libtinycompress.so
+
+# NFC
+vendor/lib/libnfc-nci.so
+vendor/lib64/libnfc-nci.so
+vendor/lib/hw/nfc_nci.exynos7420.so
+
+# DRM
+vendor/lib/libdrm.so
+vendor/lib64/libdrm.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib64/libwvdrm_L3.so
+
+# Gatekeeper / Keymaster
+vendor/lib/hw/gatekeeper.exynos7420.so
+vendor/lib/hw/keystore.exynos7420.so
+vendor/lib64/hw/gatekeeper.exynos7420.so
+vendor/lib64/hw/keystore.exynos7420.so
+
+# TrustZone / TEE
+vendor/lib/libMcClient.so
+vendor/lib/libMcRegistry.so
+vendor/lib64/libMcClient.so
+vendor/lib64/libMcRegistry.so
+vendor/app/TrustonicTui/TuiService.apk
+vendor/lib/libtui.so
+vendor/lib64/libtui.so
+
+# Samsung-specific
+vendor/lib/libsamsungSoundbooster_plus.so
+vendor/lib/libsaiv.so
+vendor/lib/libsaiv_SAC.so
+vendor/lib64/libsamsungSoundbooster_plus.so
+
+# Thermal
+vendor/etc/thermal_info_config.json
+
+# Firmware
+etc/firmware/mfc_fw.bin

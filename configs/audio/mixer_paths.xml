@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    Copyright (C) 2024 The LineageOS Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+
+    mixer_paths.xml for Galaxy A8 2016 (a8xelte)
+    TODO: Extract actual mixer paths from stock firmware.
+    This is a placeholder based on the universal7420 common audio HAL.
+-->
+<mixer>
+    <!-- These will be populated from stock firmware extraction -->
+    <!-- Use: adb pull /vendor/etc/mixer_paths_0.xml from stock Oreo -->
+</mixer>
