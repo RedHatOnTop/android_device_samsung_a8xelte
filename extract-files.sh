@@ -59,14 +59,20 @@ mkdir -p "$DEVICE_ROOT/framework"
 mkdir -p "$DEVICE_ROOT/vendor/etc"
 
 # Read the blob list and extract
-while IFS="|" read -r src dst; do
+while IFS= read -r line; do
     # Skip comments and empty lines
-    [[ "$src" =~ ^#.*$ ]] && continue
-    [[ -z "$src" ]] && continue
+    [[ "$line" =~ ^#.*$ ]] && continue
+    [[ -z "$line" ]] && continue
 
-    # Trim whitespace
-    src=$(echo "$src" | xargs)
-    dst=$(echo "$dst" | xargs)
+    # If line contains |, split into source and destination
+    # Otherwise, use the same path for both source and destination
+    if [[ "$line" == *"|"* ]]; then
+        src=$(echo "$line" | cut -d'|' -f1 | xargs)
+        dst=$(echo "$line" | cut -d'|' -f2 | xargs)
+    else
+        src=$(echo "$line" | xargs)
+        dst="$src"
+    fi
 
     # Create destination directory
     mkdir -p "$(dirname "$DEVICE_ROOT/$dst")"

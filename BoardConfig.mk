@@ -38,14 +38,17 @@ TARGET_LD_SHIM_LIBS += \
 	/vendor/lib/libbauthserver.so|/vendor/lib/libbauthtzcommon_shim.so \
 	/vendor/lib64/libbauthserver.so|/vendor/lib64/libbauthtzcommon_shim.so
 
-# Include path
-TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
+# Include path (commented out - $(DEVICE_PATH)/include does not exist yet)
+# TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
-# Init (using common universal7420 init helpers)
-# TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_a8xelte
+# Init (enables multi-variant boot detection for S/K/L/F/0/Y variants)
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_a8xelte
 
-# Kernel
-TARGET_KERNEL_CONFIG := exynos7420-a8xelte_defconfig
+# Kernel (use a8xelteskt defconfig from samsungexynos7420 kernel repo)
+TARGET_KERNEL_CONFIG := exynos7420-a8xelteskt_defconfig
+
+# DTB handling - use stock DTBs from firmware
+BOARD_MKBOOTIMG_ARGS := --second_offset 0x00F00000
 
 # Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml

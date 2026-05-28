@@ -31,6 +31,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := lineage_a8xelte
 PRODUCT_DEVICE := a8xelte
+# NOTE: This covers the SM-A810S (SKT variant). SM-A810F would need separate handling.
 PRODUCT_MODEL := SM-A810S
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
@@ -39,6 +40,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 # Use the latest approved GMS identifiers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	PRODUCT_NAME=a8xelteskt \
+	BUILD_FINGERPRINT=samsung/a8xelteskt/a8xelte:8.0.0/R16NW/A810SKSU2CRH1:user/release-keys \
 	PRIVATE_BUILD_DESC="a8xelteskt-user 8.0.0 R16NW A810SKSU2CRH1 release-keys"
-
-BUILD_FINGERPRINT := samsung/a8xelteskt/a8xelte:8.0.0/R16NW/A810SKSU2CRH1:user/release-keys

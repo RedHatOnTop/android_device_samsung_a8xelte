@@ -1,151 +1,317 @@
-# Proprietary blobs for Galaxy A8 2016 (SM-A810S)
-# Extracted from stock Oreo firmware A810SKSU2CRH1
+# Proprietary blobs for Galaxy A8 2016 (SM-A810S/SKL)
+# Extracted from stock firmware A810SKSS2CTI1 (Android 7.0 Nougat)
+# Vendor partition blobs for LineageOS 20 (Android 13)
 #
-# Format: source_path|destination_path
+# Format: destination_path (relative to system root)
 # Lines starting with # are comments
 #
-# NOTE: This is an initial list based on the S6 (zerofltexx) blob list.
-# Some blobs may differ for the A8 2016. After first extraction,
-# compare with stock firmware and adjust as needed.
-#
-# Many of these blobs come from the universal7420-common vendor tree.
-# Only device-specific blobs should be listed here.
+# NOTE: Exynos 7420 vendor partition is 32-bit only.
+# All vendor/lib/ entries below are 32-bit ARM.
+# lib64 entries are included only where 64-bit counterparts exist.
 
-# Camera
+###############################################################################
+# Audio HAL and libs
+###############################################################################
+vendor/lib/hw/android.hardware.audio@2.0-impl.so
+vendor/lib/hw/android.hardware.audio.effect@2.0-impl.so
+vendor/lib/hw/android.hardware.soundtrigger@2.0-impl.so
+vendor/lib/hw/audio.primary.default.so
+vendor/lib/hw/audio.r_submix.default.so
+vendor/lib/hw/audio.usb.default.so
+vendor/lib/hw/audio.a2dp.default.so
+vendor/lib/libaudiohookclient.so
+vendor/lib/libalsautils.so
+vendor/lib/libeffects.so
+vendor/lib/libtinycompress.so
+vendor/lib/libtinyalsa.so
+
+# Audio firmware (Clearwater DSP)
+vendor/firmware/clearwater-dsp3-tx-nb.bin
+vendor/firmware/clearwater-dsp3-tx-swb-interview.bin
+vendor/firmware/clearwater-dsp3-tx-wb.bin
+vendor/firmware/clearwater-dsp4-rx-anc-nb.bin
+vendor/firmware/clearwater-dsp4-rx-anc-wb.bin
+vendor/firmware/clearwater-dsp6-lpsd-control.bin
+vendor/firmware/clearwaterc-dsp1-trace.wmfw
+vendor/firmware/clearwaterc-dsp2-tx-nb.wmfw
+vendor/firmware/clearwaterc-dsp2-tx-swb.wmfw
+vendor/firmware/clearwaterc-dsp2-tx-wb.wmfw
+vendor/firmware/clearwaterc-dsp3-tx-nb.wmfw
+vendor/firmware/clearwaterc-dsp3-tx-swb.wmfw
+vendor/firmware/clearwaterc-dsp3-tx-wb.wmfw
+vendor/firmware/clearwaterc-dsp4-rx-anc-nb.wmfw
+vendor/firmware/clearwaterc-dsp4-rx-anc-wb.wmfw
+vendor/firmware/clearwaterc-dsp5-dsm.wmfw
+vendor/firmware/clearwaterc-dsp6-ez2-control.wmfw
+
+# Audio config
+vendor/etc/SoundBoosterParam.txt
+vendor/etc/audio_effects_common.conf
+vendor/etc/audio_policy.conf
+vendor/etc/audio_policy_configuration.xml
+vendor/etc/audio_policy_volumes.xml
+vendor/etc/default_volume_tables.xml
+
+###############################################################################
+# Camera HAL and libs
+###############################################################################
+vendor/lib/hw/vendor.samsung.hardware.camera.provider@2.4-impl.so
+vendor/lib/camera.device@1.0-impl.so
+vendor/lib/camera.device@3.2-impl.so
+vendor/lib/vendor.samsung.camera.device@1.0-impl.so
+vendor/lib/vendor.samsung.camera.device@3.2-impl.so
+vendor/lib/vendor.samsung.hardware.camera.device@1.0.so
+vendor/lib/vendor.samsung.hardware.camera.device@3.2.so
+vendor/lib/vendor.samsung.hardware.camera.provider@2.4.so
 vendor/lib/libexynoscamera.so
-vendor/lib64/libexynoscamera.so
+vendor/lib/libexynoscamera3.so
 vendor/lib/libcamera_client.so
 vendor/lib/libcameraservice.so
 vendor/lib/libcamera_metadata.so
-vendor/lib64/libcamera_client.so
-vendor/lib64/libcameraservice.so
-vendor/lib64/libcamera_metadata.so
+vendor/lib/libcamerahardwareinterface.so
+vendor/lib/libsemcamera_jni.so
 
-# Fingerprint
-vendor/lib/libbauthserver.so
-vendor/lib/libbauthtzcommon.so
-vendor/lib64/libbauthserver.so
-vendor/lib64/libbauthtzcommon.so
-vendor/lib/libfingerprint.so
-vendor/lib64/libfingerprint.so
+# Camera firmware
+vendor/firmware/fimc_is_fw2_3p3.bin
+vendor/firmware/setfile_3p3.bin
+vendor/firmware/setfile_4h9.bin
 
-# GPU (Mali-T760)
+# Camera image processing
+vendor/lib/libsaiv.so
+vendor/lib/libsaiv_BeautySolution.so
+vendor/lib/libsaiv_BeautySolutionLite.so
+vendor/lib/libsaiv_FacePreProcessing.so
+vendor/lib/libsaiv_HprFace_FD_api.so
+vendor/lib/libsaiv_HprFace_FD_jni.so
+vendor/lib/libsaiv_HprFace_LD_api.so
+vendor/lib/libsaiv_HprFace_LD_jni.so
+vendor/lib/libsaiv_HprFace_utils_api.so
+vendor/lib/libsaiv_HprFace_utils_jni.so
+vendor/lib/libsaiv_vision.so
+vendor/lib/libHpr_LocFace_mvfd_v1.0.so
+vendor/lib/libHpr_LocLandmark_sdm_v1.0.so
+vendor/lib/libDualShotMattingCoreLIB.so
+vendor/lib/libSelfieToneCurveCorrection.so
+vendor/lib/libsmart_cropping.so
+vendor/lib/libsnap_caffe.so
+vendor/lib/libCreateSceneMap.so
+vendor/lib/libQjpeg.so
+vendor/lib/libquram.so
+vendor/lib/libquramagifencoder.so
+vendor/lib/libsecimaging.so
+vendor/lib/libsecjpeginterface.so
+vendor/lib/libsecjpegquram.so
+vendor/lib/libSEF.so
+vendor/lib/libSRIBSE_Lib.so
+vendor/lib/libexifa.so
+vendor/lib/libjpega.so
+vendor/lib/libvideofittinghelper.so
+vendor/lib/libsurfaceutil.so
+vendor/lib/libSDKRecognitionText.so
+vendor/lib/libOpenCv.so
+vendor/lib/libLifevibes_lvverx.so
+vendor/lib/libLifevibes_lvvetx.so
+
+###############################################################################
+# Display / GPU (Mali-T760)
+###############################################################################
+vendor/lib/hw/gralloc.default.so
+vendor/lib/hw/android.hardware.graphics.allocator@2.0-impl.so
+vendor/lib/hw/android.hardware.graphics.composer@2.1-impl.so
+vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl.so
+vendor/lib/hw/vibrator.default.so
 vendor/lib/egl/libGLES_mali.so
-vendor/lib64/egl/libGLES_mali.so
-vendor/lib/libOpenCL.so
-vendor/lib64/libOpenCL.so
-vendor/lib/libRS.so
-vendor/lib64/libRS.so
-vendor/lib/libRSDriver.so
-vendor/lib64/libRSDriver.so
-vendor/lib/libbcc.so
-vendor/lib64/libbcc.so
-vendor/lib/libbcinfo.so
-vendor/lib64/libbcinfo.so
-vendor/lib/libclang.so
-vendor/lib64/libclang.so
-vendor/lib/libLLVM.so
-vendor/lib64/libLLVM.so
-
-# Media / Codecs
-vendor/lib/libExynosOMX_Core.so
-vendor/lib/libExynosOMX_Resourcemanager.so
-vendor/lib/libOMX.Exynos.MPEG4.Encoder.so
-vendor/lib/libOMX.Exynos.MPEG4.Decoder.so
-vendor/lib/libOMX.Exynos.AVC.Encoder.so
-vendor/lib/libOMX.Exynos.AVC.Decoder.so
-vendor/lib/libOMX.Exynos.HEVC.Encoder.so
-vendor/lib/libOMX.Exynos.HEVC.Decoder.so
-vendor/lib/libOMX.Exynos.VP9.Decoder.so
-vendor/lib/libOMX.Exynos.VP8.Decoder.so
-vendor/lib/libOMX.Exynos.VP8.Encoder.so
-vendor/lib/libstagefrighthw.so
-
-# Display / HW Composer
-vendor/lib/libdisplay.so
-vendor/lib/libfimg.so
+vendor/lib/libhwc2on1adapter.so
+vendor/lib/libcsc.so
 vendor/lib/libexynosscaler.so
 vendor/lib/libexynosgscaler.so
-vendor/lib/libcsc.so
+vendor/lib/libfimg.so
+vendor/lib/libdisplay.so
 vendor/lib/libion.so
 vendor/lib/libion_exynos.so
-vendor/lib/hw/gralloc.exynos7420.so
-vendor/lib/hw/hwcomposer.exynos7420.so
-vendor/lib/hw/memtrack.exynos7420.so
-vendor/lib64/libdisplay.so
-vendor/lib64/libfimg.so
-vendor/lib64/libion.so
-vendor/lib64/libion_exynos.so
+vendor/lib/libRS.so
+vendor/lib/libRSDriver.so
+vendor/lib/libbcinfo.so
+vendor/lib/libbcc.so
+vendor/lib/libclang.so
+vendor/lib/libLLVM.so
+vendor/lib/libOpenCL.so
+vendor/lib/libtmdisplay.so
 
-# WiFi / Bluetooth
-vendor/etc/wifi/bcmdhd_sta.bin
-vendor/etc/wifi/bcmdhd_apsta.bin
-vendor/etc/wifi/nvram_net.txt
-vendor/lib/libbt-vendor.so
-vendor/lib64/libbt-vendor.so
-
-# GPS
-vendor/lib/hw/gps.exynos7420.so
-vendor/lib64/hw/gps.exynos7420.so
-vendor/lib/libwrappergps.so
-
+###############################################################################
 # RIL / Modem
+###############################################################################
+vendor/lib/libril.so
 vendor/lib/libsec-ril.so
 vendor/lib/libsecril-client.so
-vendor/lib/libprotobuf-cpp-full.so
-vendor/lib/libprotobuf-cpp-lite.so
-vendor/lib64/libsec-ril.so
-vendor/lib64/libsecril-client.so
-vendor/lib64/libprotobuf-cpp-full.so
-vendor/lib64/libprotobuf-cpp-lite.so
-bin/cbd
+vendor/lib/libatparser.so
+vendor/lib/vendor.samsung.hardware.radio@1.0.so
 
+###############################################################################
 # Sensors
-vendor/lib/libsensorhub.so
-vendor/lib64/libsensorhub.so
+###############################################################################
+vendor/lib/hw/android.hardware.sensors@1.0-impl.so
+vendor/lib/hw/sensors.universal7420.so
+vendor/lib/hw/cellgeofence.default.so
 
-# Audio
-vendor/lib/libaudio.so
-vendor/lib/libaudioparameter.so
-vendor/lib/libtinyalsa.so
-vendor/lib/libtinycompress.so
-vendor/lib64/libtinyalsa.so
-vendor/lib64/libtinycompress.so
-
-# NFC
-vendor/lib/libnfc-nci.so
-vendor/lib64/libnfc-nci.so
-vendor/lib/hw/nfc_nci.exynos7420.so
-
-# DRM
-vendor/lib/libdrm.so
-vendor/lib64/libdrm.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib64/libwvdrm_L3.so
-
-# Gatekeeper / Keymaster
+###############################################################################
+# Fingerprint
+###############################################################################
+vendor/lib/hw/android.hardware.gatekeeper@1.0-impl.so
+vendor/lib/hw/fingerprint.default.so
 vendor/lib/hw/gatekeeper.exynos7420.so
-vendor/lib/hw/keystore.exynos7420.so
-vendor/lib64/hw/gatekeeper.exynos7420.so
-vendor/lib64/hw/keystore.exynos7420.so
+vendor/lib/vendor.samsung.hardware.biometrics.fingerprint@2.1.so
+vendor/lib/libbauthserver.so
+vendor/lib/libbauthtzcommon.so
+vendor/lib/libegis_fp_normal_sensor_test.so
+vendor/lib/libgf_in_system_lib.so
+vendor/lib/libsynaFpSensorTestNwd.so
 
-# TrustZone / TEE
+###############################################################################
+# NFC
+###############################################################################
+vendor/lib/hw/android.hardware.nfc@1.0-impl.so
+vendor/lib/hw/nfc_nci.default.so
+vendor/lib/hw/vendor.samsung.hardware.nfc@1.0-impl.so
+vendor/lib/vendor.samsung.hardware.nfc@1.0.so
+vendor/etc/libnfc-brcm.conf
+vendor/firmware/nfc/sec_s3nrn81_firmware.bin
+
+###############################################################################
+# Media codecs (Exynos OMX)
+###############################################################################
+vendor/lib/media/libExynosOMX_Core.so
+vendor/lib/media/libExynosOMX_Resourcemanager.so
+vendor/lib/media/libOMX.Exynos.AVC.Decoder.so
+vendor/lib/media/libOMX.Exynos.AVC.Encoder.so
+vendor/lib/media/libOMX.Exynos.HEVC.Decoder.so
+vendor/lib/media/libOMX.Exynos.HEVC.Encoder.so
+vendor/lib/media/libOMX.Exynos.MPEG4.Decoder.so
+vendor/lib/media/libOMX.Exynos.MPEG4.Encoder.so
+vendor/lib/media/libOMX.Exynos.VP8.Decoder.so
+vendor/lib/media/libOMX.Exynos.VP8.Encoder.so
+vendor/lib/media/libOMX.Exynos.VP9.Decoder.so
+vendor/lib/media/libOMX.Exynos.WMV.Decoder.so
+vendor/lib/media/libstagefrighthw.so
+vendor/lib/libMP4Converter.so
+
+# MFC firmware
+vendor/firmware/mfc_fw.bin
+vendor/firmware/seiren_fw_dram.bin
+vendor/firmware/seiren_fw_sram.bin
+
+###############################################################################
+# DRM / Widevine
+###############################################################################
+vendor/lib/hw/android.hardware.drm@1.0-impl.so
+vendor/lib/libwvhidl.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libdrm.so
+vendor/lib/libSamsungPkcs11Wrapper.so
+vendor/lib/libopensslsmime.so
+
+###############################################################################
+# Keymaster / Gatekeeper / TrustZone
+###############################################################################
+vendor/lib/hw/android.hardware.keymaster@3.0-impl.so
+vendor/lib/hw/keystore.exynos7420.so
+vendor/lib/hw/vendor.samsung.security.skeymaster@3.0-impl.so
+vendor/lib/vendor.samsung.security.skeymaster@3.0_vendor.so
 vendor/lib/libMcClient.so
 vendor/lib/libMcRegistry.so
-vendor/lib64/libMcClient.so
-vendor/lib64/libMcRegistry.so
-vendor/app/TrustonicTui/TuiService.apk
-vendor/lib/libtui.so
-vendor/lib64/libtui.so
+vendor/lib/libtlc_comm.so
+vendor/lib/libtlc_tz_ccm.so
+vendor/lib/libsec_sem.so
+vendor/lib/libsecdepth.so
+vendor/lib/libsechelper_engine.so
+vendor/lib/libsecpkcs11_engine.so
+vendor/lib/libsecure_storage.so
+vendor/lib/libsecure_storage_jni.so
+vendor/lib/libucmnativecrypto.so
+vendor/lib/libucsengine.so
 
-# Samsung-specific
-vendor/lib/libsamsungSoundbooster_plus.so
-vendor/lib/libsaiv.so
-vendor/lib/libsaiv_SAC.so
-vendor/lib64/libsamsungSoundbooster_plus.so
+###############################################################################
+# Bluetooth
+###############################################################################
+vendor/lib/hw/android.hardware.bluetooth@1.0-impl.so
+vendor/lib/hw/android.hardware.broadcastradio@1.0-impl.so
+vendor/lib/libbt-vendor.so
+vendor/firmware/bcm43455_V0168.0320.hcd
 
+###############################################################################
+# WiFi
+###############################################################################
+vendor/lib/libwifi-hal.so
+vendor/lib/libwifiucmkeystorehal.so
+vendor/lib/libwpa_client.so
+vendor/lib/libcld80211.so
+vendor/lib/vendor.samsung.frameworks.ucm.wifi@1.0.so
+vendor/etc/wifi/bcmdhd_sta.bin
+vendor/etc/wifi/bcmdhd_apsta.bin
+vendor/etc/wifi/bcmdhd_mfg.bin
+vendor/etc/wifi/bcmdhd_clm.blob
+vendor/etc/wifi/bcmdhd_sta.bin_blob
+vendor/etc/wifi/bcmdhd_apsta.bin_blob
+vendor/etc/wifi/bcmdhd_mfg.bin_blob
+vendor/etc/wifi/nvram.txt
+vendor/etc/wifi/cred.conf
+vendor/etc/wifi/indoorchannel.info
+vendor/etc/wifi/wpa_supplicant.conf
+vendor/etc/wifi/wpa_supplicant_overlay.conf
+vendor/etc/wifi/p2p_supplicant_overlay.conf
+
+###############################################################################
+# GPS / GNSS
+###############################################################################
+vendor/lib/hw/android.hardware.gnss@1.0-impl.so
+vendor/lib/hw/vendor.samsung.hardware.gnss@1.0-impl.so
+vendor/lib/vendor.samsung.hardware.gnss@1.0.so
+vendor/lib/libwrappergps.so
+
+###############################################################################
+# Power
+###############################################################################
+vendor/lib/hw/android.hardware.power@1.0-impl.so
+vendor/lib/hw/power.default.so
+vendor/lib/vendor.samsung.hardware.miscpower@1.0.so
+
+###############################################################################
+# Lights
+###############################################################################
+vendor/lib/hw/android.hardware.light@2.0-impl.so
+vendor/lib/hw/lights.exynos5.so
+
+###############################################################################
 # Thermal
+###############################################################################
 vendor/etc/thermal_info_config.json
 
-# Firmware
-etc/firmware/mfc_fw.bin
+###############################################################################
+# Other vendor libs
+###############################################################################
+vendor/lib/libandroid_ssrm.so
+vendor/lib/libapa_jni.so
+vendor/lib/libcordon.so
+vendor/lib/libdapjni.so
+vendor/lib/libdmbhybridclient.so
+vendor/lib/libfactoryutil.so
+vendor/lib/libjack.so
+vendor/lib/libknox_remotedesktopclient.so
+vendor/lib/libMVersionCk.so
+vendor/lib/libomission_avoidance.so
+vendor/lib/libpa.so
+vendor/lib/libremotedesktop_client.so
+vendor/lib/libsamsungSoundbooster_plus.so
+vendor/lib/libsomp.so
+vendor/lib/libspictrl.so
+vendor/lib/libsurfaceutil.so
+
+###############################################################################
+# Public libraries (for linker namespace)
+###############################################################################
+vendor/etc/public.libraries.txt
+
+###############################################################################
+# SEPolicy
+###############################################################################
+# vendor/etc/selinux/ (directory - include all files)

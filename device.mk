@@ -20,8 +20,11 @@ LOCAL_PATH := device/samsung/a8xelte
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Audio
+# Stock firmware uses /vendor/etc/mixer_paths.xml (HIDL audio HAL 2.0)
+# The mixer_paths.xml includes /system/etc/mixer_gains.xml
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_0.xml
+	$(LOCAL_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_0.xml \
+	$(LOCAL_PATH)/configs/audio/mixer_gains.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_gains.xml
 
 # Livedisplay
 PRODUCT_PACKAGES += \
@@ -34,6 +37,8 @@ PRODUCT_COPY_FILES += \
 # Wi-Fi
 PRODUCT_PACKAGES += \
 	WifiOverlay
+# WiFi firmware and config are handled via proprietary-files.txt vendor blobs
+# Kernel defconfig uses: CONFIG_BCMDHD_FW_PATH="/vendor/etc/wifi/bcmdhd_sta.bin"
 
 # Inherit from universal7420-common
 $(call inherit-product, device/samsung/universal7420-common/device-common.mk)

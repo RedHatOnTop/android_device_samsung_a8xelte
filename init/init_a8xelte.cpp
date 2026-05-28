@@ -21,29 +21,23 @@
 
 #include <android-base/properties.h>
 #include <android-base/strings.h>
+#include <sys/_system_properties.h>
 
 #include "property_service.h"
 #include "vendor_init.h"
 
 using android::base::GetProperty;
-using android::base::ReadFileToString;
 using android::base::SetProperty;
 using android::base::Split;
 using android::base::Trim;
 using android::init::property_set;
 
-static std::string hwc_id;
-static std::string hwc_product;
-
 static void property_override(char const prop[], char const value[], bool add = true) {
-    auto pi = (android::init::PropertyInfo*)__system_property_find(prop);
+    auto pi = const_cast<prop_info*>(__system_property_find(prop));
     if (pi != nullptr) {
         __system_property_update(pi, value, strlen(value));
     } else if (add) {
-        android::init::PropertyInfo info;
-        info.name = prop;
-        info.value = value;
-        __system_property_add(&info);
+        __system_property_add(prop, strlen(prop), value, strlen(value));
     }
 }
 

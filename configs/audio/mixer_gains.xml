@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    mixer_gains.xml - Included by mixer_paths.xml
+    Samsung A810S (Exynos 7420)
+    
+    This file is included via: <include name="/system/etc/mixer_gains.xml" />
+    in mixer_paths.xml. If not present, mixer loading will fail.
+    
+    The stock firmware path is /system/etc/mixer_gains.xml (NOT vendor).
+    This file defines additional gain controls.
+    
+    NOTE: This is a placeholder. The actual mixer_gains.xml content was not
+    found in the stock firmware extraction. If audio issues occur, this file
+    needs to be pulled from a working device via ADB:
+      adb pull /system/etc/mixer_gains.xml
+    or extracted from the full system image.
+-->
+<mixer>
+    <!-- Empty mixer gains - defaults will be used -->
+</mixer>

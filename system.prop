@@ -1,5 +1,19 @@
+# Display density for A8 2016 (1080p, 5.7")
+ro.sf.lcd_density=420
+
 # Bluetooth
 bluetooth.device.default_name=Samsung Galaxy A8 (2016)
+persist.bluetooth.bluetooth_power_on_init=true
 
 # GPU
 ro.gpu.model=Mali-T760
+
+# RIL (Radio Interface Layer)
+ro.telephony.default_network=9
+telephony.lteOnCdmaDevice=0
+
+# WiFi
+wifi.interface=wlan0
+
+# Camera
+camera2.portability.force_api=1

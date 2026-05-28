@@ -18,9 +18,10 @@
 <!-- These resources are around just to allow their values to be
      customized for different hardware and product builds. -->
 <resources>
-    <!-- The A8 2016 has a 1080p display (not 1440p like the S6) -->
-    <!-- Override the common tree's 560dpi with 480dpi -->
-    <!-- This is used for boot animation resolution -->
+    <!-- A8 2016 has 1080p display, not 1440p like S6 -->
+    <integer name="config_screenDensity">420</integer>
+    <dimen name="config_screenBrightnessRangeMinimum">1</dimen>
+
     <integer name="config_screenBrightnessSettingMinimum">1</integer>
     <integer name="config_screenBrightnessSettingMaximum">255</integer>
     <integer name="config_screenBrightnessSettingDefault">80</integer>
