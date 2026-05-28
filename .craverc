@@ -1,0 +1,100 @@
+#!/bin/bash
+# .craverc - Pre-build setup script executed by crave before build commands
+# See: https://foss.crave.io/docs/crave-usage/#craverc-run-commands-file
+#
+# This script runs AFTER crave syncs the LOS 20 source tree and BEFORE build commands.
+# It clones additional repos not in the standard LOS 20 manifest.
+#
+# IMPORTANT: Only git clone is used (NOT repo sync), which complies with crave.io rules.
+
+set -e
+
+echo "[.craverc] Starting pre-build setup..."
+
+###############################################################################
+# 1. Clone additional repos not in the LOS 20 manifest
+###############################################################################
+
+# Device tree (our custom repo)
+if [ ! -d "device/samsung/a8xelte/.git" ]; then
+    echo "[.craverc] Cloning a8xelte device tree..."
+    git clone https://github.com/RedHatOnTop/android_device_samsung_a8xelte \
+        --branch lineage-20.0 --depth=1 device/samsung/a8xelte
+fi
+
+# Common Exynos 7420 device tree
+if [ ! -d "device/samsung/universal7420-common/.git" ]; then
+    echo "[.craverc] Cloning universal7420-common device tree..."
+    git clone https://github.com/samsungexynos7420/android_device_samsung_universal7420-common \
+        --branch lineage-20.0-unify --depth=1 device/samsung/universal7420-common
+fi
+
+# Kernel (Exynos 7420 - includes a8xelte DTS files)
+if [ ! -d "kernel/samsung/universal7420/.git" ]; then
+    echo "[.craverc] Cloning kernel..."
+    git clone https://github.com/samsungexynos7420/android_kernel_samsung_universal7420 \
+        --branch lineage-20 --depth=1 kernel/samsung/universal7420
+fi
+
+# Vendor blobs - common (shared among all Exynos 7420 devices)
+if [ ! -d "vendor/samsung/.git" ]; then
+    echo "[.craverc] Cloning common vendor blobs..."
+    git clone https://github.com/samsungexynos7420/proprietary_vendor_samsung \
+        --branch lineage-20.0-unify --depth=1 vendor/samsung
+fi
+
+# Vendor blobs - a8xelte device-specific
+if [ ! -d "vendor/samsung/a8xelte/.git" ]; then
+    echo "[.craverc] Cloning a8xelte vendor blobs..."
+    git clone https://github.com/RedHatOnTop/proprietary_vendor_samsung_a8xelte \
+        --branch lineage-20.0 --depth=1 vendor/samsung/a8xelte || {
+        echo "[.craverc] WARNING: a8xelte vendor blobs repo not found."
+        echo "[.craverc] The build may fail due to missing proprietary blobs."
+        echo "[.craverc] Ensure RedHatOnTop/proprietary_vendor_samsung_a8xelte exists on GitHub."
+    }
+fi
+
+# Samsung hardware HAL
+if [ ! -d "hardware/samsung/.git" ]; then
+    echo "[.craverc] Cloning Samsung hardware HAL..."
+    git clone https://github.com/LineageOS/android_hardware_samsung \
+        --branch lineage-20 --depth=1 hardware/samsung
+fi
+
+# Samsung SLSI sepolicy
+if [ ! -d "device/samsung_slsi/sepolicy/.git" ]; then
+    echo "[.craverc] Cloning Samsung SLSI sepolicy..."
+    git clone https://github.com/LineageOS/android_device_samsung_slsi_sepolicy \
+        --branch lineage-20 --depth=1 device/samsung_slsi/sepolicy
+fi
+
+# Linaro BSP HALs
+for hal in exynos exynos5 openmax graphics config; do
+    dir="hardware/samsung_slsi-linaro/$hal"
+    if [ ! -d "$dir/.git" ]; then
+        repo_name="android_hardware_samsung_slsi-linaro_$hal"
+        echo "[.craverc] Cloning Linaro BSP: $hal..."
+        git clone "https://github.com/samsungexynos7420/$repo_name" \
+            --branch lineage-20 --depth=1 "$dir" || echo "[.craverc] WARNING: Failed to clone $hal"
+    fi
+done
+
+###############################################################################
+# 2. Apply 7420 patches (framework compatibility for old 3.10 kernel)
+###############################################################################
+
+PATCHES_DIR="$HOME/7420_patches"
+if [ ! -d "$PATCHES_DIR" ]; then
+    echo "[.craverc] Cloning 7420 patches..."
+    git clone https://github.com/samsungexynos7420/7420_patches \
+        --branch lineage-20.0 --depth=1 "$PATCHES_DIR" 2>/dev/null || true
+fi
+
+if [ -d "$PATCHES_DIR" ] && [ -f "$PATCHES_DIR/apply.sh" ]; then
+    echo "[.craverc] Applying 7420 patches..."
+    cd /tmp
+    bash "$PATCHES_DIR/apply.sh" || echo "[.craverc] Warning: some patches may have failed (may be already applied)"
+    cd -
+fi
+
+echo "[.craverc] Pre-build setup complete."

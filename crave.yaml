@@ -1,0 +1,18 @@
+# Crave.io project configuration for a8xelte (LineageOS 20)
+# Docs: https://foss.crave.io/docs/crave-usage/#customizing-build-configuration-with-craveyml
+#
+# This file configures how crave CLI builds this project.
+# It does NOT need to be committed to git to be effective.
+
+settings:
+  project-ids: [36]
+
+includeFiles:
+  - .craverc
+  - local_manifests/a8xelte.xml
+
+artifacts:
+  - "out/target/product/a8xelte/*.zip"
+
+no_branch_per_workspace: false
+ignoreClientHostname: true
